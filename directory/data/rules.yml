@@ -22,3 +22,7 @@ rules:
   steps:
     - intent: inquire_time
     - action: action_tell_time
+- rule: Set ssh auth
+  steps:
+    - intent: set_ssh_auth
+    - action: action_ssh_login

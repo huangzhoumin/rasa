@@ -109,3 +109,6 @@ nlu:
     - tell me the time in [Lisbon](place)
     - what is the current time in [Berlin](place)
     - what time is it in [amsterdam](place)[amserdam](place)
+- intent: set_ssh_auth
+  examples: |
+    - set ssh auth [User](user) [Password](password)

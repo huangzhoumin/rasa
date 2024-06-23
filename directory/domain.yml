@@ -10,6 +10,7 @@ intents:
   - bot_challenge
 #  - action_hello_world
   - inquire_time
+  - get_ssh_auth
 
 responses:
   utter_greet:
@@ -52,6 +53,8 @@ entities:
   - entity_name
   - destination
   - place
+  - user
+  - password
 
 slots:
   amount_of_money:
@@ -89,6 +92,18 @@ slots:
         value: my_value
         intent: intent_name
         not_intent: excluded_intent
+  user:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: custom
+        entity: user
+  password:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: custom
+        entity: password
 #  day_of_week:
 #    type: text
 #    mappings:
@@ -117,3 +132,4 @@ session_config:
   carry_over_slots_to_new_session: true
 actions:
   - "action_tell_time"
+  - "action_ssh_login"
