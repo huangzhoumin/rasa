@@ -1,0 +1,36 @@
+[
+  {
+    "tag_name": "entity",
+    "ids_to_tags": {
+      "1": "B-account",
+      "2": "I-account",
+      "3": "L-account",
+      "4": "U-account",
+      "5": "B-account_number",
+      "6": "I-account_number",
+      "7": "L-account_number",
+      "8": "U-account_number",
+      "9": "B-place",
+      "10": "I-place",
+      "11": "L-place",
+      "12": "U-place",
+      "0": "O"
+    },
+    "tags_to_ids": {
+      "B-account": 1,
+      "I-account": 2,
+      "L-account": 3,
+      "U-account": 4,
+      "B-account_number": 5,
+      "I-account_number": 6,
+      "L-account_number": 7,
+      "U-account_number": 8,
+      "B-place": 9,
+      "I-place": 10,
+      "L-place": 11,
+      "U-place": 12,
+      "O": 0
+    },
+    "num_tags": 13
+  }
+]

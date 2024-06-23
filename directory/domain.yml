@@ -1,0 +1,119 @@
+version: "3.1"
+
+intents:
+  - greet
+  - goodbye
+  - affirm
+  - deny
+  - mood_great
+  - mood_unhappy
+  - bot_challenge
+#  - action_hello_world
+  - inquire_time
+
+responses:
+  utter_greet:
+  - text: "Hey! How are you?"
+  - text: "Hey,{name}"
+    buttons:
+      - title: "great"
+        payload: "/mood_great"
+    channel: "slack"
+  - custom:
+      blocks:
+        - type: section
+          text:
+            text: "Book a time"
+            type: mrdwn
+          accessory:
+            type: datepicker
+            initial_date: '2024-06-23'
+            placeholder:
+              type: plain_text
+              text: Select a data
+
+  utter_cheer_up:
+  - text: "Here is something to cheer you up:"
+    image: "https://i.imgur.com/nGF1K8f.jpg"
+
+  utter_did_that_help:
+  - text: "Did that help you?"
+
+  utter_happy:
+  - text: "Great, carry on!"
+
+  utter_goodbye:
+  - text: "Bye"
+
+  utter_iamabot:
+  - text: "I am a bot, powered by Rasa."
+
+entities:
+  - entity_name
+  - destination
+  - place
+
+slots:
+  amount_of_money:
+    type: any
+    mappings:
+      - type: from_entity
+        entity: number
+        intent: make_transaction
+        not_intent: check_transaction
+  destination:
+    type: text
+    influence_conversation: false
+    mappings:
+      - type: custom
+        entity: destination
+  slot_name:
+    type: any
+    mappings:
+      - type: from_entity
+        entity: entity_name
+        role: role_name
+        group: group_name
+        intent: intent_name
+        not_intent: excluded_intent
+  slot_name2:
+    type: text
+    mappings:
+      - type: from_text
+        intent: intent_name
+        not_intent: excluded_intent
+  slot_name3:
+    type: text
+    mappings:
+      - type: from_text
+        value: my_value
+        intent: intent_name
+        not_intent: excluded_intent
+#  day_of_week:
+#    type: text
+#    mappings:
+#      - type: custom
+#        action: action_calculate_day_of_week
+  price_range:
+    type: categorical
+    values:
+      - low
+      - medium
+      - high
+    mappings:
+      - type: custom
+  items:
+    type: list
+    mappings:
+      - type: from_entity
+        entity: shooping_item
+#    current_account:
+#      type: float
+#      initial_value: 100
+#      mappings:
+#        - type: custom
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
+actions:
+  - "action_tell_time"
